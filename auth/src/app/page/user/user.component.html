@@ -1,1 +1,27 @@
-<p>user works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let col of cols">
+        {{ col.title }}
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of list$ | async">
+      <td *ngFor="let col of cols">
+        {{ item[col.key] | piper:col.pipes:col.pipeArgs }}
+      </td>
+      <td>
+        <div class="btn-group" role="group" aria-label="">
+          <a [routerLink]="['/user-edit', item.id]" type="button" class="btn btn-info">
+            <i class="fa fa-pencil"></i>
+          </a>
+          <button type="button" class="btn btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

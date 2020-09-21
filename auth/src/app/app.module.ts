@@ -11,6 +11,9 @@ import { ConfigService } from './service/config.service';
 import { HomeComponent } from './page/home/home.component';
 import { UserComponent } from './page/user/user.component';
 import { LoginComponent } from './page/login/login.component';
+import { PiperPipe } from './pipe/piper.pipe';
+import { RolePipe } from './pipe/role.pipe';
+import { UserEditComponent } from './page/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { LoginComponent } from './page/login/login.component';
     NavigationComponent,
     HomeComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    PiperPipe,
+    RolePipe,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,
