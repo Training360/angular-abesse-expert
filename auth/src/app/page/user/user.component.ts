@@ -10,7 +10,7 @@ import { UserService } from 'src/app/service/user.service';
 export class UserComponent implements OnInit {
 
   list$ = this.userService.read();
-  cols = this.config.userColumns;
+  cols$ = this.config.userColumns$;
 
   constructor(
     private userService: UserService,

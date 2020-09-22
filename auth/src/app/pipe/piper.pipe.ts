@@ -1,11 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { PipeManager } from './pipe-manager';
 
 @Pipe({
   name: 'piper'
 })
 export class PiperPipe implements PipeTransform {
 
-  transform(value: unknown, pipes?: PipeTransform[], pipeArgs?: any[][]): unknown {
+  transform(value: unknown, pipes?: string[], pipeArgs?: any[][]): unknown {
     if (!value || !pipes || !pipeArgs) {
       return value;
     }
@@ -14,7 +15,7 @@ export class PiperPipe implements PipeTransform {
 
     for (let i = 0; i < pipes.length; i++) {
       pipeArgs[i] = pipeArgs[i] || [];
-      const pipe = pipes[i];
+      const pipe = PipeManager.PipeForKey(pipes[i]);
       if (pipe?.transform) {
         output = pipe.transform(output || value, ...pipeArgs[i]);
       } else {

@@ -1,5 +1,7 @@
 import { UpperCasePipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { RolePipe } from '../pipe/role.pipe';
 
 export interface INavItem {
@@ -27,8 +29,10 @@ export class ConfigService {
   navItems: INavItem[] = [
     {path: '/', label: 'Home'},
     {path: '/users', label: 'Users'},
-    {path: '/login', label: 'Login'},
   ];
+
+  navItems$: BehaviorSubject<INavItem[]> = new BehaviorSubject([]);
+  userColumns$: BehaviorSubject<ITableColumn[]> = new BehaviorSubject([]);
 
   userColumns: ITableColumn[] = [
     {
@@ -50,11 +54,18 @@ export class ConfigService {
     },
   ];
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
   bootstrap(): () => void {
     return (): void => {
-      console.log('startup process');
+      this.http.get<ConfigService>(`${this.apiUrl}settings`).subscribe(
+        settings => {
+          this.navItems$.next(settings.navItems);
+          this.userColumns$.next(settings.userColumns);
+        }
+      );
     };
   }
 }

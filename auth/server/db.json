@@ -4,22 +4,47 @@
       "id": 1,
       "name": "John Doe",
       "email": "john@gmail.com",
-      "password": "$2a$10$NrgxQv0wSd4p7BOSyVBeveUY14eJ2l7KbtSVr5FKfazBeis913rXq",
+      "password": "$2a$10$MbMIRPmTCky.VDCDQGVZ7uQlgixJxEPIq8ebTrTyR.RP7WZrDMoI.",
       "role": 1
     },
     {
       "id": 2,
       "name": "Jane Doe",
       "email": "jane@gmail.com",
-      "password": "$2a$10$b7pw.xcrdMPNFjFnz5x74u.xPr4QqoLSiMIgX6nIwkng6hrvKdu9e",
+      "password": "$2a$10$BtX/YnFoiNFJyFWGo8vSTOuI53kMD0W6eH90Wo3FImU/hftQCSCbS",
       "role": 2
     },
     {
       "id": 3,
       "name": "Bill Doe",
       "email": "bill@gmail.com",
-      "password": "$2a$10$NFE7eEcleI9cNrKrEQeWcO4hhx/W3vhRmV5UkaW7BTc.2O/VK/WAS",
+      "password": "$2a$10$Bu.Q1lU1ecEZOEqTAoqlO.0Sr5AK3z9/U3jR1hbTFOLrcZ.VXpCGi",
       "role": 3
     }
-  ]
+  ],
+  "settings": {
+    "navItems": [
+      {"path": "/", "label": "Home"},
+      {"path": "/users", "label": "Users"}
+    ],
+    "userColumns": [
+      {
+        "key": "name",
+        "title": "Name",
+        "pipes": ["upperCase"],
+        "pipeArgs": [[]]
+      },
+      {
+        "key": "email",
+        "title": "Email",
+        "type": "email"
+      },
+      {
+        "key": "role",
+        "title": "Role",
+        "pipes": ["role"],
+        "pipeArgs": [[]]
+      }
+    ]
+  }
 }

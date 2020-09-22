@@ -1,4 +1,4 @@
-<table class="table">
+<table *ngIf="cols$ | async as cols" class="table">
   <thead>
     <tr>
       <th *ngFor="let col of cols">

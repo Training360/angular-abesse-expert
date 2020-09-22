@@ -24,13 +24,13 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    combineLatest([
+    /* combineLatest([
       this.userService.update({id: 1, password: 'abesse'}),
       this.userService.update({id: 2, password: 'abesse'}),
       this.userService.update({id: 3, password: 'abesse'}),
     ]).subscribe(
       resp => console.log(resp)
-    );
+    ); */
   }
 
   onLogin(ngForm: NgForm): void {

@@ -6,15 +6,19 @@
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavId">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li *ngFor="let item of navItems" class="nav-item">
+      <li *ngFor="let item of navItems$ | async" class="nav-item">
         <a class="nav-link" [routerLink]="item.path">
           {{ item.label }}
         </a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <button *ngIf="user$ | async; else loginBtn" (click)="onLogout()" class="btn btn-info">
+      <i class="fa fa-sign-out"></i>
+    </button>
+    <ng-template #loginBtn>
+      <a routerLink="/login"  class="btn btn-success">
+        <i class="fa fa-sign-in"></i>
+      </a>
+    </ng-template>
   </div>
 </nav>

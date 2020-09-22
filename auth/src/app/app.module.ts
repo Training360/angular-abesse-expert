@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { PiperPipe } from './pipe/piper.pipe';
 import { RolePipe } from './pipe/role.pipe';
 import { UserEditComponent } from './page/user-edit/user-edit.component';
 import { JwtInterceptorService } from './service/jwt-interceptor.service';
+import { ForbiddenComponent } from './page/forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { JwtInterceptorService } from './service/jwt-interceptor.service';
     LoginComponent,
     PiperPipe,
     RolePipe,
-    UserEditComponent
+    UserEditComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,7 @@ import { JwtInterceptorService } from './service/jwt-interceptor.service';
     {
       provide: APP_INITIALIZER,
       useFactory: (service: ConfigService) => service.bootstrap(),
-      deps: [ConfigService],
+      deps: [ConfigService, HttpClient],
       multi: true
     },
     {
