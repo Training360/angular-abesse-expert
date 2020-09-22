@@ -31,8 +31,8 @@ export class AuthService {
     }
   }
 
-  login(loginData: User): Observable<{accessToken: string}> {
-    return this.http.post<{accessToken: string}>(
+  login(loginData: User): Observable<User> {
+    return this.http.post<User>(
       `${this.config.apiUrl}login`,
       {email: loginData.email, password: loginData.password}
     ).pipe(
@@ -48,11 +48,17 @@ export class AuthService {
           localStorage.removeItem(this.userObjectName);
           this.currentUserSubject$.next(null);
         } else {
-          user[0].token = this.lastToken;
+          user[0].accessToken = this.lastToken;
           localStorage.setItem(this.userObjectName, JSON.stringify(user[0]));
           this.currentUserSubject$.next(user[0]);
         }
       })
-    )
+    );
+  }
+
+  logout(): void {
+    localStorage.removeItem(this.userObjectName);
+    this.currentUserSubject$.next(null);
+    this.router.navigate(['login']);
   }
 }
