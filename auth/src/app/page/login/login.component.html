@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="row">
+  <div class="col-4 offset-4">
+    <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+      <div class="form-group">
+        <label for="">Email</label>
+        <input [(ngModel)]="user.email" email required type="email" name="email" class="form-control" placeholder="email" aria-describedby="helpId">
+        <small id="helpId" class="text-muted">Help text</small>
+      </div>
+      <div class="form-group">
+        <label for="">Password</label>
+        <input required [(ngModel)]="user.password" type="password" name="password" class="form-control" placeholder="password" aria-describedby="helpId">
+        <small id="helpId" class="text-muted">Help text</small>
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger mt-2 mb-2">
+        {{ errorMessage }}
+      </div>
+
+      <button [disabled]="loginForm.invalid" type="submit" class="btn btn-block btn-primary">
+        <i class="fa fa-login"></i> login
+      </button>
+    </form>
+  </div>
+</div>

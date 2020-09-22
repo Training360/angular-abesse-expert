@@ -15,7 +15,9 @@ export class AuthService {
   private userObjectName = 'currentUser';
   private currentUserSubject$: BehaviorSubject<User> = new BehaviorSubject(null);
   currentUser$: Observable<User> = this.currentUserSubject$.asObservable();
-  currentUserValue: User = this.currentUserSubject$.value;
+  get currentUserValue(): User {
+    return this.currentUserSubject$.value;
+  }
   lastToken = '';
 
   constructor(

@@ -1,25 +1,25 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "John Doe",
-            "email": "john@gmail.com",
-            "password": "",
-            "role": 1
-        },
-        {
-            "id": 2,
-            "name": "Jane Doe",
-            "email": "jane@gmail.com",
-            "password": "",
-            "role": 2
-        },
-        {
-            "id": 3,
-            "name": "Bill Doe",
-            "email": "bill@gmail.com",
-            "password": "",
-            "role": 3
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@gmail.com",
+      "password": "$2a$10$NrgxQv0wSd4p7BOSyVBeveUY14eJ2l7KbtSVr5FKfazBeis913rXq",
+      "role": 1
+    },
+    {
+      "id": 2,
+      "name": "Jane Doe",
+      "email": "jane@gmail.com",
+      "password": "$2a$10$b7pw.xcrdMPNFjFnz5x74u.xPr4QqoLSiMIgX6nIwkng6hrvKdu9e",
+      "role": 2
+    },
+    {
+      "id": 3,
+      "name": "Bill Doe",
+      "email": "bill@gmail.com",
+      "password": "$2a$10$NFE7eEcleI9cNrKrEQeWcO4hhx/W3vhRmV5UkaW7BTc.2O/VK/WAS",
+      "role": 3
+    }
+  ]
 }
