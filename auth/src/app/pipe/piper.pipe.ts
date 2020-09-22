@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { pipeline } from 'stream';
 
 @Pipe({
   name: 'piper'
