@@ -1,6 +1,8 @@
 // tslint:disable: no-console
-import { AfterViewChecked, ChangeDetectionStrategy, Component, DoCheck, Input, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { User } from 'src/app/model/user';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-fib-list',
@@ -19,11 +21,24 @@ export class FibListComponent implements OnInit, DoCheck, AfterViewChecked {
     {key: 'first_name', label: 'Fname'},
   ];
 
+  tick = 0;
   filterPhrase = '';
+  filterControl = new FormControl('');
 
-  constructor() { }
+  constructor(
+    private cd: ChangeDetectorRef,
+  ) { }
 
   ngOnInit(): void {
+    this.filterControl.valueChanges.pipe(
+      debounceTime(1000)
+    ).subscribe(
+      phrase => {
+        console.log(phrase);
+        this.filterPhrase = phrase;
+        this.cd.detectChanges();
+      }
+    );
   }
 
   calculate(investor: User): number {
@@ -50,11 +65,11 @@ export class FibListComponent implements OnInit, DoCheck, AfterViewChecked {
   }
 
   ngDoCheck(): void {
-    console.time('checking ' + this.type);
+    // console.time('checking ' + this.type);
   }
 
   ngAfterViewChecked(): void {
-    console.timeEnd('checking ' + this.type);
+    // console.timeEnd('checking ' + this.type);
   }
 
 }
